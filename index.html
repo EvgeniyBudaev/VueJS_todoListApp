@@ -6,16 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Todo App</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="components/app-header.js"></script>
 </head>
 <body>
 <div id="app">
-    <h1>Todo App</h1>
+    <app-header></app-header>
 </div>
 <script>
 var app = new Vue({
     el: '#app',
     data: {
-
+        todos: [
+            { id: 1, label: 'Купить молока' },
+            { id: 2, label: 'Помыть полы' },
+            { id: 3, label: 'Пропылесосить'}
+        ]
     },
 });
 </script>
