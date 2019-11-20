@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Todo App</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="components/app-header.js"></script>
+    <script src="components/todo-list.js"></script>
 </head>
 <body>
 <div id="app">
     <app-header></app-header>
+    <todo-list v-bind:todos="todos"></todo-list>
 </div>
 <script>
 var app = new Vue({
@@ -19,7 +22,7 @@ var app = new Vue({
         todos: [
             { id: 1, label: 'Купить молока' },
             { id: 2, label: 'Помыть полы' },
-            { id: 3, label: 'Пропылесосить'}
+            { id: 3, label: 'Пропылесосить' }
         ]
     },
 });
