@@ -1,11 +1,24 @@
 Vue.component('todo-list', {
     template: `
         <div>
-            <ul class="todo-list">
-                <li class="todo-list-item" v-for="todo in todos">{{ todo.label }}</li>
+            <ul class="list-group todo-list">
+                <li class="list-group-item" v-for="todo in todos">
+                    <todo-list-item v-bind:label="todo.label"
+                                    :done="todo.done"
+                                    :important="todo.important"
+                                    v-on:on-delete-item="onDeleteItem"
+                                    v-on:on-edit-item="$emit('on-edit-item', todo.id)"
+                                    @on-toggle-done="$emit('on-toggle-done', todo.id)"
+                                    @on-toggle-important="$emit('on-toggle-important', todo.id)"></todo-list-item>
+                </li>
             </ul>
             <div>Всего дел: {{ todos.length }}</div>
         </div>
     `,
-    props: [ 'todos' ]
+    props: [ 'todos' ],
+    methods: {
+        onDeleteItem: function (id) {
+            this.$emit('on-delete-item', id);       // передаем событие компоненту родителю (app)
+        }
+    }
 });
